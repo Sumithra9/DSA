@@ -34,14 +34,16 @@ public:
         return list1;
     }
     ListNode* mergeKLists(vector<ListNode*>& lists) {
-        int n=lists.size();
-        if(n!=0){
-            ListNode* merged=lists[0];
-            for(int i=1;i<n;i++){
-                merged=mergeTwoLists(merged,lists[i]);
-            }
-            return merged;
-        }
-        return 0;  
+        if(lists.empty()) return NULL;
+        return mergeKHelper(lists,0,lists.size()-1);
+    }
+    ListNode* mergeKHelper(vector<ListNode*>& lists,int left,int right){
+        if(left==right) return lists[left];
+        if(left>right) return NULL;
+        int mid=left+(right-left)/2;
+        ListNode* list1=mergeKHelper(lists,left,mid);
+        ListNode* list2=mergeKHelper(lists,mid+1,right);
+        return mergeTwoLists(list1,list2);
+
     }
 };
