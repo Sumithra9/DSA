@@ -3,13 +3,13 @@ class Solution {
         List<List<Integer>> result=new ArrayList<>();
         List<Integer> prev_row=null;
         for(int i=0;i<numRows;i++){
-            List<Integer>row=new ArrayList<>();
+            List<Integer> row=new ArrayList<>();
             for(int j=0;j<=i;j++){
                 if(j==0||j==i){
                     row.add(1);
                 }
                 else{
-                    row.add(prev_row.get(j-1)+prev_row.get(j));
+                    row.add(prev_row.get(j)+prev_row.get(j-1));
                 }
             }
             result.add(row);
