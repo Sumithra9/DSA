@@ -33,7 +33,7 @@ class Solution {
         int lb=lowerbound(nums,target);
         int ub=upperbound(nums,target);
         int[] result=new int[2];        
-        if(lb == -1 || lb == nums.length || nums[lb] != target){
+        if(lb == nums.length || nums[lb] != target){
             result[0]=-1;
             result[1]=-1;
         }
