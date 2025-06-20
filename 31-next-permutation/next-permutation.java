@@ -1,38 +1,37 @@
 class Solution {
     public void nextPermutation(int[] nums) {
-        int n=nums.length;
-        int b=-1;
-        for(int i=n-2;i>=0;i--){
+        int index=-1;
+        for(int i=nums.length-2;i>=0;i--){
             if(nums[i]<nums[i+1]){
-                b=i;
+                index=i;
                 break;
             }
         }
-        if(b==-1){
+        if(index==-1){
             int start=0;
-            int end=n-1;
+            int end=nums.length-1;
             while(start<end){
-                int x=nums[start];
+                int temp=nums[start];
                 nums[start]=nums[end];
-                nums[end]=x;
+                nums[end]=temp;
                 start++;
                 end--;
             }
         }
         else{
-            int r=Integer.MAX_VALUE;
-            int index=-1;
-            for(int i=b+1;i<n;i++){
-                if(nums[i]<r && nums[i]>nums[b]){
-                    r=nums[i];
-                    index=i;
+            int maxi=Integer.MAX_VALUE;
+            int index2=-1;
+            for(int i=index+1;i<nums.length;i++){
+                if(nums[i]<maxi && nums[i]>nums[index]){
+                    maxi=nums[i];
+                    index2=i;
                 }
             }
-            int temp=nums[b];
-            nums[b]=r;
-            nums[index]=temp;
-            for(int i=b+1;i<n;i++){
-                for(int j=i+1;j<n;j++){
+            int tem=nums[index];
+            nums[index]=nums[index2];
+            nums[index2]=tem;
+            for(int i=index+1;i<nums.length;i++){
+                for(int j=i+1;j<nums.length;j++){
                     if(nums[i]>nums[j]){
                         int t=nums[i];
                         nums[i]=nums[j];
@@ -40,7 +39,6 @@ class Solution {
                     }
                 }
             }
-
         }
     }
 }
