@@ -21,10 +21,10 @@ class Solution {
             i++;
         }
         Arrays.sort(freq,(a,b)->Integer.compare(b.num,a.num));
-        String result="";
-        for(Freq f:freq){
-            for(int j=0;j<f.num;j++) result+=f.character;
+        StringBuilder result = new StringBuilder();
+        for (Freq f : freq) {
+            for (int j = 0; j < f.num; j++) result.append(f.character);
         }
-        return result;
+        return result.toString();
     }
 }
