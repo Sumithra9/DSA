@@ -4,11 +4,7 @@ class Solution {
         int n=s.length();
         int start=0;
         int end=n-1;
-        char[] str=new char[n];
-        for(int i=0;i<n;i++){
-            str[i]=s.charAt(i);
-        }
-        String result="";
+        char[] str=s.toCharArray();
         while(start<end){
             if(!vowel.contains(str[start])) start++;
             if(!vowel.contains(str[end])) end--;
