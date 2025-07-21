@@ -15,7 +15,7 @@ class Solution {
                 mid++;
             }
             else if(nums[mid]==1) mid++;
-            else if(nums[mid]==2){
+            else{
                 swap(nums,mid,high);
                 high--;
             }
