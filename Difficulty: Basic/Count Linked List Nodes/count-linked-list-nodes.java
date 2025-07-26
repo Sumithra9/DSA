@@ -12,10 +12,10 @@ class Solution {
         // code here
         if(head==null) return 0;
         int count=1;
-        Node curr=head;
-        while(curr.next!=null){
+        Node current=head;
+        while(current.next!=null){
+            current=current.next;
             count++;
-            curr=curr.next;
         }
         return count;
     }
