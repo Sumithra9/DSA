@@ -12,13 +12,16 @@ class Node{
 class Solution {
     public Node insertAtEnd(Node head, int x) {
         // code here
-        Node curr=head;
-        Node tail=new Node(x);
-        if(head==null) return tail;
-        while(curr.next!=null){
-            curr=curr.next;
+        Node current=head;
+        Node newnode=new Node(x);
+        if(head==null) {
+            head=newnode;
+            return head;
         }
-        curr.next=tail;
+        while(current.next!=null){
+            current=current.next;
+        }
+        current.next=newnode;
         return head;
     }
 }
