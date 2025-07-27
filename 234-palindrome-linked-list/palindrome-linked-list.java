@@ -15,23 +15,23 @@ class Solution {
         while(temp!=null){
             ListNode front=temp.next;
             temp.next=prev;
-            prev=temp;
-            temp=front;
+            prev=temp;temp=front;
         }
         return prev;
     }
+
     public boolean isPalindrome(ListNode head) {
         if(head==null || head.next==null) return true;
-        ListNode fast=head;
         ListNode slow=head;
+        ListNode fast=head;
         while(fast!=null && fast.next!=null){
             fast=fast.next.next;
             slow=slow.next;
         }
-        ListNode second=reverse(slow);
         ListNode first=head;
+        ListNode second=reverse(slow);
         while(second!=null){
-            if(first.val!=second.val) return false;
+            if(second.val!=first.val) return false;
             first=first.next;
             second=second.next;
         }
