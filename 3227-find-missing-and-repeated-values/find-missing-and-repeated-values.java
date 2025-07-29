@@ -10,24 +10,15 @@ class Solution {
             for(int j=0;j<n;j++){
                 if(set.contains(grid[i][j])){
                     repeating=grid[i][j];
-                    break;
                 }
-                set.add(grid[i][j]);
+                else{
+                    set.add(grid[i][j]);
+                    sum+=grid[i][j];
+                }
             }
         }
-        for(int i=0;i<n;i++){
-            for(int j=0;j<n;j++){
-                sum+=grid[i][j];
-            }
-        }
-        sum-=repeating;
         int missing=realsum-sum;
-        int[] arr=new int[2];
-        arr[0]=repeating;
-        arr[1]=missing;
-        System.out.println(sum);
-        System.out.println(realsum);
-        return arr;
+        return new int[]{repeating,missing};
 
 
     }
