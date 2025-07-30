@@ -37,7 +37,13 @@ class Solution {
             }
             System.out.println(maxafterb+" "+index);
             swap(nums,b,index);
-            Arrays.sort(nums,b+1,n);
+            for(int i=b+1;i<nums.length;i++){
+                for(int j=i+1;j<nums.length;j++){
+                    if(nums[i]>nums[j]){
+                        swap(nums,i,j);
+                    }
+                }
+            }
         }
     }
 }
