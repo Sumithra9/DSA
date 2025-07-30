@@ -1,45 +1,43 @@
 class Solution {
-    public void reverse(int[] nums){
-        int s=0;
-        int e=nums.length-1;
-        int temp;
-        while(s<e){
-            swap(nums,s,e);
-            s++;
-            e--;
+    public void reverse(int[] nums,int start,int end){
+        while(start<end){
+            int temp=nums[start];
+            nums[start]=nums[end];
+            nums[end]=temp;
+            start++;
+            end--;
         }
     }
-    public void swap(int nums[],int s,int e){
-        int temp=nums[s];
-        nums[s]=nums[e];
-        nums[e]=temp;
+    public void swap(int nums[],int start,int end){
+        int temp=nums[start];
+        nums[start]=nums[end];
+        nums[end]=temp;
     }
     public void nextPermutation(int[] nums) {
-        int index=-1;
-        for(int i=nums.length-2;i>=0;i--){
+        int b=-1;
+        int n=nums.length;
+        for(int i=n-2;i>=0;i--){
             if(nums[i]<nums[i+1]){
-                index=i;
+                b=i;
                 break;
             }
         }
-        if(index==-1) reverse(nums);
+        System.out.println(b);
+        if(b==-1){
+            reverse(nums,0,n-1);
+        }
         else{
-            int min=Integer.MAX_VALUE;
-            int sindex=-1;
-            for(int i=index+1;i<nums.length;i++){
-                if(nums[i]<min && nums[i]>nums[index]){
-                    sindex=i;
-                    min=nums[i];
+            int maxafterb=Integer.MAX_VALUE;
+            int index=-1;
+            for(int i=b+1;i<n;i++){
+                if(nums[i]<maxafterb && nums[i]>nums[b]){
+                    maxafterb=nums[i];
+                    index=i;
                 }
             }
-            swap(nums,index,sindex);
-            for(int i=index+1;i<nums.length;i++){
-                for(int j=i+1;j<nums.length;j++){
-                    if(nums[i]>nums[j]){
-                        swap(nums,i,j);
-                    }
-                }
-            }
+            System.out.println(maxafterb+" "+index);
+            swap(nums,b,index);
+            Arrays.sort(nums,b+1,n);
         }
     }
 }
