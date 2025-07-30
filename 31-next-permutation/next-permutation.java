@@ -1,5 +1,7 @@
 class Solution {
-    public void reverse(int[] nums,int start,int end){
+    public void reverse(int[] nums){
+        int start=0;
+        int end=nums.length-1;
         while(start<end){
             int temp=nums[start];
             nums[start]=nums[end];
@@ -24,7 +26,7 @@ class Solution {
         }
         System.out.println(b);
         if(b==-1){
-            reverse(nums,0,n-1);
+            reverse(nums);
         }
         else{
             int maxafterb=Integer.MAX_VALUE;
